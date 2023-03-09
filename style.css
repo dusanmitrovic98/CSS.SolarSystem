@@ -1,0 +1,176 @@
+:root {
+  --sun-color: rgb(248, 244, 163);
+  --mercury-color: orange;
+  --venus-color: brown;
+  --earth-color: green;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(33, 33, 33);
+}
+
+.planets-container {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  transform: scaleX(5);
+}
+
+.sun {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: var(--sun-color);
+  box-shadow: 0 0 60px rgb(253, 203, 163), 0 0 98px rgb(184, 160, 26);
+  transform: scaleX(0.2);
+}
+
+.planet {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: red;
+  transform: scaleX(0.2);
+}
+
+.planet::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+}
+
+.planet-container {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  animation: correct 12s infinite linear;
+}
+
+#venus-container {
+  left: 85px;
+}
+
+#earth-container {
+  left: 42.5px;
+  top: 100px;
+}
+
+.route {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  animation: rotate 12s infinite linear;
+}
+
+.planet-index {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+#mercury-planet-index {
+  animation: hideMercuryPlanet 12s infinite;
+}
+
+#venus-planet-index {
+  animation: hideVenusPlanet 12s infinite;
+}
+
+#earth-planet-index {
+  animation: hideEarthPlanet 12s infinite;
+}
+
+#mercury {
+  background-color: var(--mercury-color);
+}
+
+#venus {
+  background-color: var(--venus-color);
+}
+
+#earth {
+  background-color: var(--earth-color);
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes correct {
+  0% {
+    transform: rotateZ(360deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
+
+@keyframes hideMercuryPlanet {
+  0% {
+    z-index: 999;
+    transform: scale(0.9);
+  }
+  25% {
+    z-index: -999;
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+  100% {
+    z-index: 999;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes hideVenusPlanet {
+  0% {
+    z-index: -999;
+    transform: scale(0.95);
+  }
+  50% {
+    z-index: 999;
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1);
+  }
+  90% {
+    transform: scale(0.9);
+  }
+  100% {
+    z-index: -999;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes hideEarthPlanet {
+  0% {
+    z-index: 999;
+    transform: scale(1.2);
+  }
+  50% {
+    z-index: -999;
+    transform: scale(0.8);
+  }
+  100% {
+    z-index: 999;
+    transform: scale(1.2);
+  }
+}
